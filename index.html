@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendation System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">M</div>
+          <div>
+            <p class="eyebrow">Personalized</p>
+            <h1>Movie Recommendation System</h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-shell">
+        <section class="controls-panel">
+          <h2>Find picks for a user</h2>
+          <form id="recommendForm" class="recommend-form">
+            <label>
+              User ID
+              <input id="userId" type="number" min="1" value="1" required />
+            </label>
+
+            <label>
+              Recommendation method
+              <select id="method">
+                <option value="svd">SVD</option>
+                <option value="content">Content-based</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </label>
+
+            <label>
+              Results count
+              <input id="topN" type="number" min="1" max="20" value="6" />
+            </label>
+
+            <label>
+              Search movie title
+              <input id="searchInput" type="text" placeholder="Filter by movie title" />
+            </label>
+
+            <button id="fetchBtn" type="submit">Get recommendations</button>
+          </form>
+        </section>
+
+        <section class="results-panel">
+          <div id="status" class="status">Ready to recommend</div>
+          <div id="loading" class="loading hidden" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Loading recommendations...</span>
+          </div>
+          <div id="errorState" class="error hidden" aria-live="assertive"></div>
+          <div id="results" class="results-grid" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
